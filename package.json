@@ -1,5 +1,6 @@
 {
   "name": "photo_tagging",
+  "homepage": "https://marypopplns.github.io/photo_tagging/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

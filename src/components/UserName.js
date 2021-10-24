@@ -63,7 +63,7 @@ export default function UserName(props) {
           type='text'
         ></input>
         <button type='submit' style={button_style}>
-          <i style={enter_icon_style} class='fas fa-sign-in-alt'></i>
+          <i style={enter_icon_style} className='fas fa-sign-in-alt'></i>
         </button>
       </form>
     </>
