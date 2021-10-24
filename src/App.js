@@ -16,6 +16,7 @@ function App() {
       ) : (
         <UserName inputHandler={inputHandler} />
       )}
+      <div>{name}</div>
     </>
   );
 }

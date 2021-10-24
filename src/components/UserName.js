@@ -12,6 +12,22 @@ export default function UserName(props) {
     alignItems: 'center',
   };
 
+  const input_style = {
+    height: '50px',
+    width: '30em',
+  };
+
+  const button_style = {
+    height: '50px',
+    background: 'none',
+    border: 'none',
+  };
+
+  const enter_icon_style = {
+    color: 'white',
+    fontSize: '3em',
+  };
+
   function submitHandler(event) {
     event.preventDefault();
     props.inputHandler(inputName);
@@ -23,8 +39,15 @@ export default function UserName(props) {
   return (
     <>
       <form style={form_style} onSubmit={submitHandler}>
-        <input onChange={onChangeHandler} value={inputName} type='text'></input>
-        <button>enter</button>
+        <input
+          style={input_style}
+          onChange={onChangeHandler}
+          value={inputName}
+          type='text'
+        ></input>
+        <button type='submit' style={button_style}>
+          <i style={enter_icon_style} class='fas fa-sign-in-alt'></i>
+        </button>
       </form>
     </>
   );
