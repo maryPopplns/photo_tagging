@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import Home from '../home/Home';
 import HighScores from '../high_scores/HighScores';
+import Game from '../game/Game';
 
 export default function GameController(props) {
   const [showScores, setShowScores] = useState(false);
