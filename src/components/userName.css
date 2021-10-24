@@ -1,0 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@1,900&display=swap');
+
+#name_input:focus {
+  outline: none;
+}
+
+#input_heading {
+  font-family: 'Source Code Pro', monospace;
+}

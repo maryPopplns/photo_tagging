@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import './userName.css';
 
 export default function UserName(props) {
   const [inputName, setInputName] = useState('');
@@ -12,15 +13,26 @@ export default function UserName(props) {
     alignItems: 'center',
   };
 
+  const heading_style = {
+    position: 'fixed',
+    top: '.25em',
+    color: 'white',
+    fontSize: '5em',
+  };
+
   const input_style = {
     height: '50px',
-    width: '30em',
+    width: '15em',
+    textAlign: 'center',
+    fontSize: '2em',
+    borderRadius: '.5em',
   };
 
   const button_style = {
     height: '50px',
     background: 'none',
     border: 'none',
+    cursor: 'grab',
   };
 
   const enter_icon_style = {
@@ -32,6 +44,7 @@ export default function UserName(props) {
     event.preventDefault();
     props.inputHandler(inputName);
   }
+
   function onChangeHandler(event) {
     setInputName(event.target.value);
   }
@@ -39,7 +52,11 @@ export default function UserName(props) {
   return (
     <>
       <form style={form_style} onSubmit={submitHandler}>
+        <h2 id='input_heading' style={heading_style}>
+          Enter Your Name
+        </h2>
         <input
+          id='name_input'
           style={input_style}
           onChange={onChangeHandler}
           value={inputName}
