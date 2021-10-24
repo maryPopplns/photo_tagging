@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import Home from '../home/Home';
+import HighScores from '../high_scores/HighScores';
 
 export default function GameController(props) {
   const [showScores, setShowScores] = useState(false);
@@ -21,5 +22,11 @@ export default function GameController(props) {
         showScoresToggle={showScoresToggle}
       />
     );
+  }
+  if (showScores) {
+    return <HighScores showScoresToggle={showScoresToggle} />;
+  }
+  if (showGame) {
+    return <Game showGameToggle={showGameToggle} />;
   }
 }
