@@ -1,5 +1,5 @@
 import UserName from './components/username/UserName';
-import Home from './components/home/Home';
+import GameController from './components/game_controller/GameController';
 import { useState } from 'react';
 
 function App() {
@@ -11,7 +11,11 @@ function App() {
 
   return (
     <>
-      {name ? <Home name={name} /> : <UserName inputHandler={inputHandler} />}
+      {name ? (
+        <GameController name={name} />
+      ) : (
+        <UserName inputHandler={inputHandler} />
+      )}
     </>
   );
 }
