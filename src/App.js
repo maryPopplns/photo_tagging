@@ -1,5 +1,5 @@
-import UserName from './components/UserName';
-import Home from './components/Home';
+import UserName from './components/username/UserName';
+import Home from './components/home/Home';
 import { useState } from 'react';
 
 function App() {
@@ -11,12 +11,7 @@ function App() {
 
   return (
     <>
-      {name ? (
-        <Home inputName={name} />
-      ) : (
-        <UserName inputHandler={inputHandler} />
-      )}
-      <div>{name}</div>
+      {name ? <Home name={name} /> : <UserName inputHandler={inputHandler} />}
     </>
   );
 }
