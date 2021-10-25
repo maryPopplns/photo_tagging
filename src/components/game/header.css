@@ -1,6 +1,17 @@
-#game_header {
+#game_header_container {
   display: flex;
   justify-content: center;
-  align-items: center;
-  height: 10vh;
+  width: 100vw;
+}
+
+#game_header {
+  background: #000000;
+  height: 2em;
+  width: 100vw;
+  max-width: 1200px;
+}
+
+#game_home_button {
+  position: relative;
+  top: 0.4em;
 }
