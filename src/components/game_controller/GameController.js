@@ -6,7 +6,6 @@ import Game from '../game/Game';
 export default function GameController(props) {
   const [showScores, setShowScores] = useState(false);
   const [showGame, setShowGame] = useState(false);
-  // const NAME = props.name;
 
   function showGameToggle() {
     setShowGame((prevState) => !prevState);
