@@ -1,7 +1,12 @@
-#main_marvel_image {
+#beach_container {
   display: flex;
   justify-content: center;
-  height: 90vh;
-  width: 100vw;
+  /* height: 90vh; */
+  /* width: 100vw; */
   background: black;
+}
+
+#beach_image {
+  max-width: 100%;
+  height: auto;
 }
