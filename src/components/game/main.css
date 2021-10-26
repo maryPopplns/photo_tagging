@@ -8,3 +8,24 @@
   max-width: 100%;
   height: auto;
 }
+
+#pop_up_list {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 2em;
+  height: 2em;
+  border: 1px solid black;
+  z-index: 1;
+}
+
+#character_selection_container {
+  position: absolute;
+  top: 16px;
+  left: 32px;
+  background: rgba(0, 0, 0, 0.327);
+  /* border: 1px solid black; */
+  height: 10em;
+  width: 5em;
+}
