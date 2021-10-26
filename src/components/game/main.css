@@ -4,6 +4,7 @@
 }
 
 #beach_image {
+  cursor: crosshair;
   max-width: 100%;
   height: auto;
 }
