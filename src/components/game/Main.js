@@ -5,8 +5,8 @@ import './main.css';
 export default function Main() {
   const [windowMeasurements, setWindowMeasurements] = useState({});
   const [calculatedCoordinates, setCalculatedCoordinates] = useState({}); // calculated coordinates when mini_menu was placed
-  const [top, setTop] = useState(0);
-  const [left, setLeft] = useState(0);
+  const [top, setTop] = useState(1);
+  const [left, setLeft] = useState(1);
   const [visibility, setVisibility] = useState(false);
   const pop_up_style = {
     top: top,
@@ -14,12 +14,20 @@ export default function Main() {
     visibility: visibility ? 'visible' : 'hidden',
   };
 
-  // TODO create useEffect for when the window screen size changes
   useEffect(() => {
-    // window resize event listener
+    if (window.innerWidth >= 1200) {
+      const ADJUSTED_X = (windowMeasurements.X - 1200) / 2;
+      console.log(ADJUSTED_X);
+      setLeft(calculatedCoordinates.X + ADJUSTED_X - 16);
+    }
+    // else {
+    // }
+  }, [windowMeasurements, calculatedCoordinates]);
+
+  useEffect(() => {
     window.addEventListener('resize', () => {
       const { innerWidth, innerHeight } = window;
-      setWindowMeasurements({ innerWidth, innerHeight });
+      setWindowMeasurements({ X: innerWidth, Y: innerHeight });
     });
   }, []);
 
@@ -73,8 +81,6 @@ export default function Main() {
       <main id='beach_container'>
         <img id='beach_image' onClick={clickHandler} src={beach} alt='beach' />
       </main>
-      {console.log(windowMeasurements.innerHeight)}
-      {console.log(windowMeasurements.innerWidth)}
     </>
   );
 }
