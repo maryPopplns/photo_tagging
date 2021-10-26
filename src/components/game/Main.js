@@ -6,7 +6,6 @@ export default function Main() {
     const IMAGE = document.getElementById('beach_image');
 
     const SCREEN_WIDTH = window.innerWidth;
-    const SCREEN_HEIGHT = window.innerHeight;
 
     const IMAGE_HEIGHT = IMAGE.offsetHeight;
     const IMAGE_WIDTH = IMAGE.offsetWidth;
@@ -16,11 +15,22 @@ export default function Main() {
 
     if (SCREEN_WIDTH >= 1200) {
       const ADJUSTED_X = PAGE_X - (SCREEN_WIDTH - IMAGE_WIDTH) / 2;
-      const X = ADJUSTED_X >= 40 && ADJUSTED_X <= 70;
-      const Y = PAGE_Y >= 170 && PAGE_Y <= 200;
-      return X && Y;
+      const IS_X_INBOUNDS = ADJUSTED_X >= 40 && ADJUSTED_X <= 70;
+      const IS_Y_INBOUNDS = PAGE_Y >= 135 && PAGE_Y <= 165;
+      // return IS_X_INBOUNDS && IS_Y_INBOUNDS;
+      console.log(IS_X_INBOUNDS && IS_Y_INBOUNDS);
     } else {
-      // const ADJUSTED_X =
+      // const X_RATIO = IMAGE_WIDTH / 1200;
+      const X_RATIO = 1200 / IMAGE_WIDTH;
+      const Y_RATIO = 900 / IMAGE_HEIGHT;
+
+      const ADJUSTED_X = X_RATIO * PAGE_X;
+      const ADJUSTED_Y = Y_RATIO * PAGE_Y;
+
+      const IS_X_INBOUNDS = ADJUSTED_X >= 40 && ADJUSTED_X <= 70;
+      const IS_Y_INBOUNDS = ADJUSTED_Y >= 135 && ADJUSTED_Y <= 165;
+      console.log(IS_X_INBOUNDS && IS_Y_INBOUNDS);
+      // return IS_X_INBOUNDS && IS_Y_INBOUNDS;
     }
   }
   return (
