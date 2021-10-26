@@ -2,7 +2,7 @@ import './main.css';
 import beach from '../../assets/beach.jpeg';
 
 export default function Main() {
-  function clickHandler(event) {
+  function INBOUNDS_DETERMINER(event) {
     const IMAGE = document.getElementById('beach_image');
 
     const SCREEN_WIDTH = window.innerWidth;
@@ -33,6 +33,11 @@ export default function Main() {
       // return IS_X_INBOUNDS && IS_Y_INBOUNDS;
     }
   }
+
+  function clickHandler(event) {
+    INBOUNDS_DETERMINER(event);
+  }
+
   return (
     <main id='beach_container'>
       <img id='beach_image' onClick={clickHandler} src={beach} alt='beach' />
