@@ -16,7 +16,6 @@
   align-items: center;
   width: 2em;
   height: 2em;
-  border: 1px solid black;
   z-index: 1;
 }
 
@@ -25,7 +24,6 @@
   top: 16px;
   left: 32px;
   background: rgba(0, 0, 0, 0.327);
-  /* border: 1px solid black; */
   height: 10em;
   width: 5em;
 }

@@ -1,16 +1,18 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import beach from '../../assets/beach.jpeg';
 import './main.css';
 
 export default function Main() {
   const [top, setTop] = useState(0);
   const [left, setLeft] = useState(0);
-  // const [visibility, setVisibility] = useState(false);
+  const [visibility, setVisibility] = useState(false);
+
+  // TODO create useEffet for when the window screen size changes
 
   const pop_up_style = {
     top: top,
     left: left,
-    // visibility: visibility ? 'visible' : 'hidden',
+    visibility: visibility ? 'visible' : 'hidden',
   };
 
   function COORDINATE_CALC(event) {
@@ -33,16 +35,15 @@ export default function Main() {
     }
   }
 
-  function POP_UP(event) {
-    const PAGE_X = event.pageX - 16;
-    const PAGE_Y = event.pageY - 16;
-    setLeft(PAGE_X);
-    setTop(PAGE_Y);
+  function SET_POP_UP_COORDINATES(event) {
+    setLeft(event.pageX - 16);
+    setTop(event.pageY - 16);
   }
 
   function clickHandler(event) {
     const COORDINATES = COORDINATE_CALC(event);
-    POP_UP(event);
+    setVisibility((prevState) => !prevState);
+    SET_POP_UP_COORDINATES(event);
   }
 
   return (
