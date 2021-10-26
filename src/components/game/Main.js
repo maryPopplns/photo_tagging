@@ -15,13 +15,22 @@ export default function Main() {
   };
 
   useEffect(() => {
+    const IMAGE = document.getElementById('beach_image');
+    const IMAGE_WIDTH = IMAGE.offsetWidth;
+    const IMAGE_HEIGHT = IMAGE.offsetHeight;
+
     if (window.innerWidth >= 1200) {
       const ADJUSTED_X = (windowMeasurements.X - 1200) / 2;
-      console.log(ADJUSTED_X);
       setLeft(calculatedCoordinates.X + ADJUSTED_X - 16);
+    } else {
+      const RATIO_X = IMAGE_WIDTH / 1200;
+      const RATIO_Y = IMAGE_HEIGHT / 900;
+
+      const ADJUSTED_X = calculatedCoordinates.X * RATIO_X - 16;
+      const ADJUSTED_Y = calculatedCoordinates.Y * RATIO_Y - 16;
+      setLeft(ADJUSTED_X);
+      setTop(ADJUSTED_Y);
     }
-    // else {
-    // }
   }, [windowMeasurements, calculatedCoordinates]);
 
   useEffect(() => {
