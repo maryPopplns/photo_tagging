@@ -85,7 +85,11 @@ export default function Main() {
             fill='none'
           />
         </svg>
-        <div id='character_selection_container'></div>
+        <div id='character_selection_container'>
+          <div className='charcter_selection'>Waldo</div>
+          <div className='charcter_selection'>Odlaw</div>
+          <div className='charcter_selection'>Wizard</div>
+        </div>
       </div>
       <main id='beach_container'>
         <img id='beach_image' onClick={clickHandler} src={beach} alt='beach' />
