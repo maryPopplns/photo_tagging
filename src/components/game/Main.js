@@ -72,6 +72,10 @@ export default function Main() {
     SET_POP_UP_COORDINATES(event, COORDINATES);
   }
 
+  function characterSelectionHandler(event) {
+    console.log(event.target.id);
+  }
+
   return (
     <>
       <div style={pop_up_style} id='pop_up_list'>
@@ -86,9 +90,27 @@ export default function Main() {
           />
         </svg>
         <div id='character_selection_container'>
-          <div className='charcter_selection'>Waldo</div>
-          <div className='charcter_selection'>Odlaw</div>
-          <div className='charcter_selection'>Wizard</div>
+          <div
+            id='waldo'
+            className='charcter_selection'
+            onClick={characterSelectionHandler}
+          >
+            Waldo
+          </div>
+          <div
+            id='odlaw'
+            className='charcter_selection'
+            onClick={characterSelectionHandler}
+          >
+            Odlaw
+          </div>
+          <div
+            id='wizard'
+            className='charcter_selection'
+            onClick={characterSelectionHandler}
+          >
+            Wizard
+          </div>
         </div>
       </div>
       <main id='beach_container'>

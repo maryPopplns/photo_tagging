@@ -38,5 +38,11 @@
   height: 3em;
   font-size: 1em;
   border: 1px solid black;
+  cursor: grab;
   /* color: white; */
+}
+
+.charcter_selection:hover {
+  background: black;
+  color: white;
 }
