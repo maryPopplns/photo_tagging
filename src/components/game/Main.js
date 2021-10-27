@@ -4,7 +4,7 @@ import beach from '../../assets/beach.jpeg';
 import app from '../../firebase-config';
 import './main.css';
 
-export default function Main() {
+export default function Main(props) {
   const [calculatedCoordinates, setCalculatedCoordinates] = useState({
     X: 0,
     Y: 0,
@@ -44,6 +44,18 @@ export default function Main() {
       setWindowMeasurements({ X: innerWidth, Y: innerHeight });
     });
   }, []);
+
+  useEffect(() => {
+    let count = 0;
+    for (let character in charactersFound) {
+      if (charactersFound[character] === true) {
+        count++;
+      }
+    }
+    if (count === 3) {
+      props.gameOver();
+    }
+  }, [charactersFound, props]);
 
   useEffect(() => {
     //adjusted left and top values of the minimenu as the screen size changes
