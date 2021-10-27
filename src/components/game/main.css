@@ -46,3 +46,16 @@
   background: black;
   color: white;
 }
+
+.character_found {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 5em;
+  height: 3em;
+  font-size: 1em;
+  border: 1px solid black;
+  color: white;
+  background: black;
+  text-decoration: line-through;
+}

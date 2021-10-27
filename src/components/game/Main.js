@@ -120,6 +120,11 @@ export default function Main() {
     }
   }
 
+  function doesNothing() {
+    console.log('already selected');
+    return;
+  }
+
   return (
     <>
       <div style={pop_up_style} id='pop_up_list'>
@@ -136,22 +141,37 @@ export default function Main() {
         <div id='character_selection_container'>
           <div
             id='waldo'
-            className='character_selection'
-            onClick={characterSelectionHandler}
+            className={
+              !charactersFound.waldo ? 'character_selection' : 'character_found'
+            }
+            // className='character_selection'
+            onClick={
+              !charactersFound.waldo ? characterSelectionHandler : doesNothing
+            }
           >
             Waldo
           </div>
           <div
             id='odlaw'
-            className='character_selection'
-            onClick={characterSelectionHandler}
+            className={
+              !charactersFound.odlaw ? 'character_selection' : 'character_found'
+            }
+            onClick={
+              !charactersFound.odlaw ? characterSelectionHandler : doesNothing
+            }
           >
             Odlaw
           </div>
           <div
             id='wizard'
-            className='character_selection'
-            onClick={characterSelectionHandler}
+            className={
+              !charactersFound.wizard
+                ? 'character_selection'
+                : 'character_found'
+            }
+            onClick={
+              !charactersFound.wizard ? characterSelectionHandler : doesNothing
+            }
           >
             Wizard
           </div>
