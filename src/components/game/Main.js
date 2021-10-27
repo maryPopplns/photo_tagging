@@ -14,6 +14,12 @@ export default function Main() {
   const [visibility, setVisibility] = useState(false);
   const [left, setLeft] = useState(0);
   const [top, setTop] = useState(0);
+  const [charactersFound, setCharactersFound] = useState({
+    waldo: false,
+    odlaw: false,
+    wizard: false,
+  });
+
   const pop_up_style = {
     top: top,
     left: left,
@@ -91,7 +97,26 @@ export default function Main() {
   }
 
   function characterSelectionHandler(event) {
-    console.log(event.target.id);
+    const COORDINATE_X = calculatedCoordinates.X;
+    const COORDINATE_Y = calculatedCoordinates.Y;
+    const CHARACTER = characterCoordinates.filter(
+      (character) => character.name === event.target.id
+    )[0];
+    const NAME = CHARACTER.name;
+
+    const X_INBOUNDS =
+      COORDINATE_X >= CHARACTER['x-min'] && COORDINATE_X <= CHARACTER['x-max'];
+    const Y_INBOUNDS =
+      COORDINATE_Y >= CHARACTER['y-min'] && COORDINATE_Y <= CHARACTER['y-max'];
+    const ANSWER = X_INBOUNDS && Y_INBOUNDS;
+
+    if (ANSWER) {
+      setCharactersFound((prevState) => {
+        const COPY = { ...prevState };
+        COPY[NAME] = true;
+        return COPY;
+      });
+    }
   }
 
   return (
@@ -139,7 +164,7 @@ export default function Main() {
           alt='beach'
         />
       </main>
-      {console.log(characterCoordinates)}
+      {console.log(charactersFound)}
     </>
   );
 }
