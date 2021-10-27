@@ -116,6 +116,7 @@ export default function Main() {
         COPY[NAME] = true;
         return COPY;
       });
+      setVisibility((prevState) => !prevState);
     }
   }
 
@@ -164,7 +165,6 @@ export default function Main() {
           alt='beach'
         />
       </main>
-      {console.log(charactersFound)}
     </>
   );
 }
