@@ -1,16 +1,19 @@
 import { useState, useEffect } from 'react';
+import { getFirestore, collection, getDocs } from 'firebase/firestore/lite';
 import beach from '../../assets/beach.jpeg';
+import app from '../../firebase-config';
 import './main.css';
 
 export default function Main() {
-  const [windowMeasurements, setWindowMeasurements] = useState({ X: 0, Y: 0 });
   const [calculatedCoordinates, setCalculatedCoordinates] = useState({
     X: 0,
     Y: 0,
   }); // calculated coordinates when mini_menu was placed
-  const [top, setTop] = useState(0);
-  const [left, setLeft] = useState(0);
+  const [windowMeasurements, setWindowMeasurements] = useState({ X: 0, Y: 0 });
+  const [characterCoordinates, setCharacterCoordinates] = useState([]);
   const [visibility, setVisibility] = useState(false);
+  const [left, setLeft] = useState(0);
+  const [top, setTop] = useState(0);
   const pop_up_style = {
     top: top,
     left: left,
@@ -18,6 +21,26 @@ export default function Main() {
   };
 
   useEffect(() => {
+    // TODO firebase setup
+    const DB = getFirestore(app);
+
+    (async function getCities(db) {
+      const coordinatesCol = collection(db, 'coordinates');
+      const coordinateSnapshot = await getDocs(coordinatesCol);
+      const coordinatesList = coordinateSnapshot.docs.map((doc) => doc.data());
+      setCharacterCoordinates(coordinatesList);
+    })(DB);
+  }, []);
+
+  useEffect(() => {
+    window.addEventListener('resize', () => {
+      const { innerWidth, innerHeight } = window;
+      setWindowMeasurements({ X: innerWidth, Y: innerHeight });
+    });
+  }, []);
+
+  useEffect(() => {
+    //adjusted left and top values of the minimenu as the screen size changes
     const IMAGE = document.getElementById('beach_image');
     const IMAGE_WIDTH = IMAGE.offsetWidth;
     const IMAGE_HEIGHT = IMAGE.offsetHeight;
@@ -34,13 +57,6 @@ export default function Main() {
       setTop(ADJUSTED_Y);
     }
   }, [windowMeasurements, calculatedCoordinates]);
-
-  useEffect(() => {
-    window.addEventListener('resize', () => {
-      const { innerWidth, innerHeight } = window;
-      setWindowMeasurements({ X: innerWidth, Y: innerHeight });
-    });
-  }, []);
 
   function COORDINATE_CALC(event) {
     const IMAGE = document.getElementById('beach_image');
@@ -68,7 +84,7 @@ export default function Main() {
     setCalculatedCoordinates(coordinates);
   }
 
-  function clickHandler(event) {
+  function clickImageHandler(event) {
     const COORDINATES = COORDINATE_CALC(event);
     setVisibility((prevState) => !prevState);
     SET_POP_UP_COORDINATES(event, COORDINATES);
@@ -94,21 +110,21 @@ export default function Main() {
         <div id='character_selection_container'>
           <div
             id='waldo'
-            className='charcter_selection'
+            className='character_selection'
             onClick={characterSelectionHandler}
           >
             Waldo
           </div>
           <div
             id='odlaw'
-            className='charcter_selection'
+            className='character_selection'
             onClick={characterSelectionHandler}
           >
             Odlaw
           </div>
           <div
             id='wizard'
-            className='charcter_selection'
+            className='character_selection'
             onClick={characterSelectionHandler}
           >
             Wizard
@@ -116,8 +132,14 @@ export default function Main() {
         </div>
       </div>
       <main id='beach_container'>
-        <img id='beach_image' onClick={clickHandler} src={beach} alt='beach' />
+        <img
+          id='beach_image'
+          onClick={clickImageHandler}
+          src={beach}
+          alt='beach'
+        />
       </main>
+      {console.log(characterCoordinates)}
     </>
   );
 }

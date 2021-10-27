@@ -30,7 +30,7 @@
   width: 5em;
 }
 
-.charcter_selection {
+.character_selection {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -42,7 +42,7 @@
   /* color: white; */
 }
 
-.charcter_selection:hover {
+.character_selection:hover {
   background: black;
   color: white;
 }
