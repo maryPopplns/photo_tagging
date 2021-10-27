@@ -3,7 +3,6 @@ import Main from './Main';
 import './game.css';
 
 export default function Game(props) {
-  // TODO cerate timer for header
   const [isGameOver, setIsGameOver] = useState(false);
   const [timeElapsed, setTimeElapsed] = useState(0);
 
@@ -13,7 +12,7 @@ export default function Game(props) {
     }, 1000);
     if (isGameOver) {
       clearInterval(TIMER);
-      // TODO end timer
+      // TODO add time to DB
     }
     return () => clearInterval(TIMER);
   }, [isGameOver]);
