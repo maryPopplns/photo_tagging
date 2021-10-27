@@ -3,10 +3,13 @@ import beach from '../../assets/beach.jpeg';
 import './main.css';
 
 export default function Main() {
-  const [windowMeasurements, setWindowMeasurements] = useState({});
-  const [calculatedCoordinates, setCalculatedCoordinates] = useState({}); // calculated coordinates when mini_menu was placed
-  const [top, setTop] = useState(1);
-  const [left, setLeft] = useState(1);
+  const [windowMeasurements, setWindowMeasurements] = useState({ X: 0, Y: 0 });
+  const [calculatedCoordinates, setCalculatedCoordinates] = useState({
+    X: 0,
+    Y: 0,
+  }); // calculated coordinates when mini_menu was placed
+  const [top, setTop] = useState(0);
+  const [left, setLeft] = useState(0);
   const [visibility, setVisibility] = useState(false);
   const pop_up_style = {
     top: top,
@@ -18,7 +21,6 @@ export default function Main() {
     const IMAGE = document.getElementById('beach_image');
     const IMAGE_WIDTH = IMAGE.offsetWidth;
     const IMAGE_HEIGHT = IMAGE.offsetHeight;
-
     if (window.innerWidth >= 1200) {
       const ADJUSTED_X = (windowMeasurements.X - 1200) / 2;
       setLeft(calculatedCoordinates.X + ADJUSTED_X - 16);
